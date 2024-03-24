@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Axios Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <h1>Axios Example</h1>
+    <form>
+      <input type="file" id="fileInput" />
+      <button onclick="uploadFile()">Upload</button>
+    </form>
+
+    <script>
+      axios({
+        method: "GET",
+        url: "https://api.example.com/data",
+        params: {
+          name: "Ysh",
+          age: 18,
+        },
+      })
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      function uploadFile() {
+        const fileInput = document.getElementById("fileInput");
+        const file = fileInput.files[0];
+        const formData = new FormData();
+        formData.append("file", file);
+
+        axios({
+          method: "POST",
+          url: "https://api.example.com/upload",
+          data: formData,
+        })
+          .then((res) => {
+            console.log(res.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+
+      axios
+        .post("https://api.example.com/data", { name: "Ysh", age: 18 })
+        .then(function (res) {
+          console.log(res.data);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    </script>
+  </body>
+</html>
