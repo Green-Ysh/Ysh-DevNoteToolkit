@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>获取表单提交数据</title>
+    <script src="form-serialize.js"></script>
+  </head>
+  <body>
+    <form id="myForm">
+      <label for="name">姓名:</label>
+      <input type="text" id="name" name="name" />
+      <br />
+      <br />
+      <label for="email">邮箱:</label>
+      <input type="email" id="email" name="email" />
+      <br />
+      <br />
+      <button type="button" onclick="serializeForm()">提交</button>
+    </form>
+
+    <script>
+      function serializeForm() {
+        /**
+         * 将对象序列化为字符串。
+         *
+         * @param form 要序列化的form表单。
+         * @param options 序列化选项。
+         *   - @property {boolean} disabled 禁用的字段是否序列化，默认为 false。
+         *   - @property {string} serializer 是否覆盖默认序列化程序（哈希或 url 编码），默认为 url-encoding。
+         *   - @property {boolean} hash 是否使用哈希值，默认为 false。
+         *   - @property {boolean} empty 是否包含空字符串,保证格式与表单一致，默认为 false。
+         * @returns {string} 序列化后的字符串。
+         * function serialize(obj, options) {
+         *   // implementation
+         * }
+         */
+        
+        let form = document.getElementById("myForm");
+        let formData = serialize(form, { hash: true });
+        console.log(formData);
+      }
+    </script>
+  </body>
+</html>
